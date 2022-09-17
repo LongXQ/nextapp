@@ -349,7 +349,7 @@ export default function page({java}) {
 }
 
 export async function getStaticProps(context) {
-    const java = readFileSync(path.join(process.cwd(), 'public', `java.md`), 'utf-8')
+    const java = readFileSync(path.join(process.cwd(), 'doc\java', 'java.md'), 'utf-8')
     return {
       props: {java}, // will be passed to the page component as props
     }
