@@ -1,209 +1,138 @@
-import Head from 'next/head'
+import Header from '../components/header'
+import Toc from '../components/toc'
+import Sidebar from '../components/sidebar'
+import Subheader from '../components/subheader'
+import Main from '../components/main'
+import Dock from '../components/dock'
 
-export default function Home() {
+import Listbox from '../components/listbox'
+
+import Fixbox from '../components/fixbox'
+import Bookcard from '../components/bookcard'
+
+import Booksummary from '../components/booksummary'
+
+import Category from '../components/category'
+
+import Tagnavigator from '../components/tagnavigator'
+
+function toggleClick(ev) {
+  ev.preventDefault();
+  var previousSibling = ev.currentTarget.previousSibling;
+  if(previousSibling.classList.contains('unfold-mobile')) {
+    previousSibling.classList.remove('unfold-mobile');
+  }else{
+    previousSibling.classList.add('unfold-mobile');
+  }
+}
+
+export default function Test({java}) {
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <>
+     <Header></Header>
+     <div className='subheader-wraper'>
+            <Subheader />
         </div>
-      </main>
+    <div className='container main-container'>
+    <Tagnavigator></Tagnavigator>
+     <main className='main'>
+       <div className='dock'>
+         <Dock></Dock>
+       </div>
+       <Main></Main>
+       <div className="sidebar">
+         <Listbox></Listbox>
+         <Fixbox></Fixbox>
+       </div>
+     </main>
+     </div>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-      </footer>
+    {/* <Category></Category> */}
+   
 
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
 
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
+    
+{/* <Header></Header>
+<Subheader></Subheader> */}
+{/* <Booksummary></Booksummary>
+<div className="toggle-sidebar-wrapper" onClick={toggleClick}>
+  <span className="arrow left"></span>
+</div> */}
 
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+    
 
-        footer img {
-          margin-left: 0.5rem;
-        }
+    <style jsx>{`
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 960px;
+}
 
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+.subheader-wraper {
+  position: relative;
+}
 
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
+.main-container {
+  max-width: 1240px;
+}
+    .main {
+      margin-top: 4.67rem;
+      margin-bottom: 6rem;
+      display: flex;
+      align-items: flex-start;
+    }
 
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
+    .dock {
+      margin-right: 20px;
+      width: 180px;
+  }
 
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
+    .sidebar {
+      width: 260px;
+      flex: 1
+    }
 
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
+    @media (max-width: 1200px){
+      .dock, .sidebar {
+          display: none;
+      }
+    }
 
-        .title,
-        .description {
-          text-align: center;
-        }
+    .toggle-sidebar-wrapper {
+      position: fixed;
+      background: #fff;
+      // top: calc(3.75rem);
+      // bottom: 0;
+      height :100%;
+      left: 322px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      transition: left .3s ease;
+  }
 
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
+.toggle-sidebar-wrapper .arrow {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    background-image: url('/arrow.svg');
+    line-height: normal;
+    transition: all .3s;
+}
 
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
+.toggle-sidebar-wrapper .arrow.left {
+  transform: rotate(-90deg);
+}
+    
+    `}
 
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
+    </style>
+    
+    
+    </>
   )
 }

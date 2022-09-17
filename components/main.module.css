@@ -1,0 +1,73 @@
+.timeline-container {
+    margin-top: 0;
+}
+
+.timeline-content {
+    position: relative;
+    margin-top: 0.33rem;
+}
+
+.timeline-entry-list {
+    margin-right: 21.667rem;
+    border-radius: 2px;
+    width: 700px;
+}
+
+.entry-list-container {
+    background-color: #fff;
+}
+
+.list-header {
+    padding: 1.3rem 1rem;
+    border-bottom: 1px solid hsla(0,0%,59.2%,.1);
+}
+
+.list-nav {
+    justify-content: flex-start!important;
+}
+.list-header .list-nav, .list-header .nav-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-header .nav-list {
+    align-items: center;
+    line-height: 1;
+}
+
+.list-nav .nav-list.left .nav-item {
+    font-size: 1.17rem;
+}
+.list-header .left .nav-item {
+    padding: 0 1.2rem;
+    font-size: 1.16rem;
+    border-right: 1px solid hsla(0,0%,59.2%,.2);
+}
+.nav-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.list-header .nav-list .nav-item.active a, .list-header .nav-list .nav-item a:hover {
+    color: #007fff;
+}
+
+.nav-item>a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.dorp-down-area {
+    position: relative;
+    z-index: 9;
+}
+
+.entry-list {
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+}
