@@ -22,7 +22,7 @@ export default function booksummary(props) {
         <div className={`${'book-summary'} ${unfold?'unfold-mobile':''}`}>
             <div className="book-summary-masker" onClick={()=>{setUnfold(false)}}></div>
             <div className="book-summary-inner">
-                <div className="book-summary__header">
+                {/* <div className="book-summary__header">
                     <a href="/course" target="" rel="" className="logo">
                         <svg width="137" height="28" viewBox="0 0 137 28" fill="none" xmlns="http://www.w3.org/2000/svg"
                             className="" style={{height: '100%',width: 'auto'}}>
@@ -66,9 +66,8 @@ export default function booksummary(props) {
                             <path d="M49.7849 11.4272L50.3499 23.2963H52.247L51.682 11.4272H49.7849Z" fill="#323232"></path>
                         </svg></a>
                     <div className="label">课程</div>
-
-                </div>
-                <div className="buy-sticky">
+                </div> */}
+                {/* <div className="buy-sticky">
                     <button className="section-buy">
                         购买: ￥59.9
                     </button>
@@ -77,7 +76,7 @@ export default function booksummary(props) {
                             如果您下单购买了借阅中或曾经借阅过的课程，我们将把消耗的借阅卡退还给您，每门课程最多退还1张
                         </div><span className="byte-tooltip__wrapper"></span>
                     </span></div>
-                </div>
+                </div> */}
                 <div className="book-directory-comp beautify-scrollbar-warp book-directory" cur-index="-1">
                     <div style={{padding: '0px 15px'}}>
 
@@ -141,8 +140,7 @@ export default function booksummary(props) {
             .book-summary {
                 width: 320px;
                 position: fixed;
-                // left: 0;
-                // top: 0;
+                margin-top: 2.667rem;
                 height: 100%;
                 cursor: default;
                 flex-shrink: 0;

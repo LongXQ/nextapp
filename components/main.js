@@ -46,21 +46,6 @@ export default function main() {
                     <div className="timeline-content">
                         <div className="timeline-entry-list">
                             <div className="entry-list-container">
-                                <header className="list-header" style={{ display: 'block' }}>
-                                    <nav role="navigation" className="list-nav">
-                                        <ul className="nav-list left" >
-                                            <li className="nav-item active"><a href="/">推荐</a></li>
-                                            <li className="nav-item">
-                                                <a href="/?sort=newest" >最新</a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="/?sort=three_days_hottest">热榜</a>
-                                            </li>
-                                        </ul>
-                                        <div className="dorp-down-area">
-                                        </div>
-                                    </nav>
-                                </header>
                                 <div className="entry-list-wrap">
                                     <div id="entry-list-id" name="entry-list" tag="div" className="entry-list list" ad-list="">
                                         {
@@ -92,19 +77,11 @@ export default function main() {
 
             <style jsx>{`
             .container {
-                // position: relative;
-                // margin: 0 auto;
-                // width: 100%;
-                // max-width: 960px;
                 width: 720px;
                 max-width: 100%;
                 flex-shrink: 0;
-                // margin-right: 20px;
+                margin: 0 auto;
             }
-
-            // .main-container.with-view-nav>.view {
-            //     margin-top: 4.67rem;
-            // }
 
             .timeline-container {
                 margin-top: 0;
@@ -112,7 +89,6 @@ export default function main() {
             
             .timeline-content {
                 position: relative;
-                //margin-top: 0.33rem;
             }
 
             @media (max-width: 600px) {

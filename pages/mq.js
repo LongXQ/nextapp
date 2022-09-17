@@ -20,7 +20,7 @@ import { data } from 'autoprefixer';
 
 import Toc from '../components/toc';
 
-export default function page({java}) {
+export default function mq({content}) {
 
     const [state, setState] = useState(false);
 
@@ -66,7 +66,7 @@ export default function page({java}) {
 
     marked.use({ renderer });
 
-    const html = marked.parse(java);
+    const html = marked.parse(content);
 
     // console.log(headingData)
 
@@ -307,11 +307,6 @@ export default function page({java}) {
         overflow-x: hidden;
         padding-top: 0!important;
     }
-
-    h1, h2, h3, h4, h5, h6 {
-        font-weight: 500;
-        line-height: 1.25;
-    }
    
     *, :after, :before {
         box-sizing: border-box;
@@ -319,7 +314,6 @@ export default function page({java}) {
     .markdown img {
         max-width: 100%;
     }
-
     .markdown h1 {
         margin-top: calc(0.5rem - var(3.75))!important;
         margin-bottom: 1rem;
@@ -346,7 +340,6 @@ export default function page({java}) {
     .markdown h5 {
         font-size: 1.4rem;
     }
-
     .markdown p {
         margin: 16px 0;
     }
@@ -373,8 +366,8 @@ export default function page({java}) {
 }
 
 export async function getStaticProps(context) {
-    const java = readFileSync(path.join(process.cwd(), 'doc', 'java', 'java.md'), 'utf-8')
+    const content = readFileSync(path.join(process.cwd(), 'doc', 'java', 'java.md'), 'utf-8')
     return {
-      props: {java}, // will be passed to the page component as props
+      props: {content}, // will be passed to the page component as props
     }
   }

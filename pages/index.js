@@ -30,37 +30,11 @@ export default function Test({java}) {
   return (
     <>
      <Header></Header>
-     <div className='subheader-wraper'>
-            <Subheader />
-        </div>
     <div className='container main-container'>
-    <Tagnavigator></Tagnavigator>
      <main className='main'>
-       <div className='dock'>
-         <Dock></Dock>
-       </div>
        <Main></Main>
-       <div className="sidebar">
-         <Listbox></Listbox>
-         <Fixbox></Fixbox>
-       </div>
      </main>
      </div>
-
-    {/* <Category></Category> */}
-   
-
-
-    
-{/* <Header></Header>
-<Subheader></Subheader> */}
-{/* <Booksummary></Booksummary>
-<div className="toggle-sidebar-wrapper" onClick={toggleClick}>
-  <span className="arrow left"></span>
-</div> */}
-
-    
-
     <style jsx>{`
 .container {
   position: relative;
@@ -77,7 +51,7 @@ export default function Test({java}) {
   max-width: 1240px;
 }
     .main {
-      margin-top: 4.67rem;
+      // margin-top: 4.67rem;
       margin-bottom: 6rem;
       display: flex;
       align-items: flex-start;
