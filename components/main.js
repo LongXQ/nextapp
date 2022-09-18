@@ -1,19 +1,20 @@
 import Card from "./card"
 import Bookcard from "./bookcard"
+import React from "react"
+import useSWR from 'swr'
 
 import { useState, useEffect } from 'react'
 
-function getData(num) {
-    console.log("num " + num)
+function getData(start, num) {
     var data = [];
     for(let i=0;i<num;i++) {
-        data.push(<Card></Card>)
+        data.push(<Card ></Card>)
     }
     return data;
 }
 
 
-export default function main() {
+export default function main(props) {
     let [state, setState] = useState(10)
     let [data, setData] = useState([])
 
@@ -25,9 +26,10 @@ export default function main() {
         let lastChildClientHeight = document.getElementById('entry-list-id').lastChild.clientHeight;
     
         if ((clientHeight + scrollTop) >= (scrollHeight - lastChildClientHeight)) {
+            var startIndex = state;
             state = state + 10;
             setState(state);
-            setData(getData(state));
+            setData(getData(startIndex, state));
         }
     }
 
@@ -36,8 +38,18 @@ export default function main() {
     useEffect(()=>{
         console.log('useEffect')
         window.addEventListener('scroll', handleScroll);
-        setData(getData(state));
+        setData(getData(0, state));
     }, [])
+
+    const fetcher = (...args) => fetch(...args).then((res) => console.log('swrData' +res))
+    const { swrData, error } = useSWR('/api/post/java?a=09', fetcher)
+
+    // useEffect(()=>{
+    //     console.log('swrData')
+    // }, [swrData])
+
+//     if (error) return <div>Failed to load</div>
+//   if (!swrData) return <div>Loading...</div>
     
     return (
         <main className="container main-container with-view-nav">
@@ -53,20 +65,6 @@ export default function main() {
                                                 item
                                             )
                                         }
-                                        {/* <Card></Card>
-                                        <Card></Card>
-                                        <Card></Card>
-                                        <Card></Card>
-                                        <Card></Card>
-                                        <Card></Card>
-                                        <Card></Card>
-                                        <Card></Card>
-                                        <Bookcard></Bookcard>
-                                        <Card></Card>
-                                        <Card></Card>
-                                        <Card></Card>
-                                        <Card></Card>
-                                        <Bookcard></Bookcard> */}
                                     </div>
                                 </div>
                             </div>

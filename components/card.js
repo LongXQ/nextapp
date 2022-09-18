@@ -1,6 +1,6 @@
 
 
-export default function card() {
+export default function card(props) {
     return (
         <li data-growing-container="true" data-growing-title="entryList" className="item">
             <div className="entry" style={{ marginBottom: '0px' }}>
@@ -14,32 +14,11 @@ export default function card() {
                         </a>
                     </div>
                 </div>
-                {/* <div className="content-wrapper">
-                    <div className="content-main">
-                        <div className="title-row">
-                            <a href="/post/7138648965041356830" target="_blank" rel=""
-                                title="JAVA轻量级错误码设计最佳实践" className="title">
-                                JAVA轻量级错误码设计最佳实践
-                            </a>
-                        </div>
-                        <div className="abstract">
-                            <a href="/post/7138648965041356830"
-                                target="_blank" rel="">
-                                <div>
-                                    概述目前公司团队项目中返回异常都没有错误码，如果遇到错误提示只会返回一个错误信息。随着微服务组...
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <img
-                        src="https://pic4.zhimg.com/v2-f523971495eae51efb08b2111097b609_bh.webp?source=d6434cab"
-                        alt="JAVA轻量级错误码设计最佳实践" className="lazy thumb" loading="lazy" style={{}} />
-                </div> */}
 
                 <div className="title-row">
                     <a href="/post/7138648965041356830" target="_blank" rel=""
-                                title="JAVA轻量级错误码设计最佳实践" className="title">
-                                JAVA轻量级错误码设计最佳实践JAVA轻量级错误码
+                                title={props.title} className="title">
+                                {props.title}
                     </a>
                 </div>
                 <div className="content-wrapper">
@@ -48,16 +27,15 @@ export default function card() {
                             <a href="/post/7138648965041356830"
                                 target="_blank" rel="">
                                 <div className="content">
-                                    概述目前公司团队项目中返回异常都没有错误码，如果遇到错误提.概述目前公司团队项目中返回异常都没有错误码，如果遇到错误提
-                                   
+                                    {props.desc}
                                 </div>
                             </a>
                         </div>
                     </div>
                     <div className="content-cover">
                         <img
-                        src="https://pic4.zhimg.com/v2-f523971495eae51efb08b2111097b609_bh.webp?source=d6434cab"
-                        alt="JAVA轻量级错误码设计最佳实践" className="thumb" loading="lazy" />
+                        src={props.img}
+                        alt={props.title} className="thumb" loading="lazy" />
                     </div>
                     
                 </div>

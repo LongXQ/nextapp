@@ -8,19 +8,17 @@ import "prismjs/themes/prism-solarizedlight.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers"
 import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 //import "prismjs/themes/prism-twilight.css";
-import Header from '../components/header'
-import Subheader from '../components/subheader';
+import Header from '../../components/header'
 
-import Booksummary from '../components/booksummary';
-
-import Direction from '../components/direction';
+import Booksummary from '../../components/booksummary';
 
 import { useState, useEffect } from 'react'
-import { data } from 'autoprefixer';
 
-import Toc from '../components/toc';
+import Toc from '../../components/toc';
 
-export default function redis({content}) {
+import data from '../../data/java';
+
+export default function page({java}) {
 
     const [state, setState] = useState(false);
 
@@ -66,7 +64,7 @@ export default function redis({content}) {
 
     marked.use({ renderer });
 
-    const html = marked.parse(content);
+    const html = marked.parse(java);
 
     // console.log(headingData)
 
@@ -82,7 +80,7 @@ export default function redis({content}) {
     
   return (
     <>
-        <Header />
+        <Header current='java' />
         <main className='page-container main-container'>
             <div className='view column-view'>
                 <div className='booksummarywraper'>
@@ -307,6 +305,11 @@ export default function redis({content}) {
         overflow-x: hidden;
         padding-top: 0!important;
     }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 500;
+        line-height: 1.25;
+    }
    
     *, :after, :before {
         box-sizing: border-box;
@@ -314,6 +317,7 @@ export default function redis({content}) {
     .markdown img {
         max-width: 100%;
     }
+
     .markdown h1 {
         margin-top: calc(0.5rem - var(3.75))!important;
         margin-bottom: 1rem;
@@ -340,6 +344,7 @@ export default function redis({content}) {
     .markdown h5 {
         font-size: 1.4rem;
     }
+
     .markdown p {
         margin: 16px 0;
     }
@@ -365,9 +370,19 @@ export default function redis({content}) {
   )
 }
 
+export async function getStaticPaths() {
+    
+    const paths = Object.keys(data).map((id) => ({
+        params: { id: id}
+      }))
+
+      return { paths, fallback: false }
+  }
+
 export async function getStaticProps(context) {
-    const content = readFileSync(path.join(process.cwd(), 'doc', 'java', 'java.md'), 'utf-8')
+    const id = context.params.id
+    const java = readFileSync(path.join(process.cwd(), 'doc', 'java', data[id].name), 'utf-8')
     return {
-      props: {content}, // will be passed to the page component as props
+      props: {java}, // will be passed to the page component as props
     }
   }

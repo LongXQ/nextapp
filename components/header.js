@@ -1,4 +1,5 @@
 import styles from './header.module.css'
+import data from '../data/header';
 
 import { useState, useEffect } from 'react'
 
@@ -20,36 +21,9 @@ function phoneShowOnClick(ev) {
     }
 }
 
-export default function header({props}) {
-    var data = [
-        {
-            "title": "首页",
-            "href": "/"
-        },
-        {
-            "title": "Java",
-            "href": "/java"
-        },
-        {
-            "title": "Mysql",
-            "tip": "上新",
-            "href": "/mysql"
-        },
-        {
-            "title": "Redis",
-            "href": "/redis"
-        },
-        {
-            "title": "消息队列",
-            "href": "/mq"
-        },
-        {
-            "title": "高频算法",
-            "href": "/leetcode"
-        }
-    ]
+export default function header(props) {
 
-    const [clicked, setClicked] = useState(0);
+    const [clicked, setClicked] = useState(-1);
 
     return (
         <>
@@ -72,7 +46,7 @@ export default function header({props}) {
                                 <ul className={`${styles.phone_hide} ${styles.isResourceVisible}`}>
                                     {
                                         data.map((item, index) => 
-                                            <li key={index} className={`${styles.nav_item} ${styles.link_item} ${clicked==index?styles.active:''}`} onClick={()=>setClicked(index)}>
+                                            <li key={index} className={`${styles.nav_item} ${styles.link_item} ${clicked==index?styles.active:''} ${(props!=null && props.current==item.title)?styles.active:''}`} onClick={()=>setClicked(index)}>
                                                 <a aria-current="page" href={item.href}>
                                                     {item.title}
                                                     {item.tip != null?(<span className={styles.tablead}>{item.tip}</span>):null}
